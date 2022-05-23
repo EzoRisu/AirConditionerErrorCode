@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3390BD32732ED6F2663AF890 /* Pods_AirConditionerErrorCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E967F4E4946B5FC653380987 /* Pods_AirConditionerErrorCode.framework */; };
 		FF78F6F7283BB0CF00725897 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF78F6F6283BB0CF00725897 /* AppDelegate.swift */; };
 		FF78F6F9283BB0CF00725897 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF78F6F8283BB0CF00725897 /* SceneDelegate.swift */; };
 		FF78F6FB283BB0CF00725897 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF78F6FA283BB0CF00725897 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F186DD7C8B4B7DA982DD99E /* Pods-AirConditionerErrorCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirConditionerErrorCode.debug.xcconfig"; path = "Target Support Files/Pods-AirConditionerErrorCode/Pods-AirConditionerErrorCode.debug.xcconfig"; sourceTree = "<group>"; };
+		9B0BAEB9C2EA1872399F7036 /* Pods-AirConditionerErrorCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirConditionerErrorCode.release.xcconfig"; path = "Target Support Files/Pods-AirConditionerErrorCode/Pods-AirConditionerErrorCode.release.xcconfig"; sourceTree = "<group>"; };
+		E967F4E4946B5FC653380987 /* Pods_AirConditionerErrorCode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirConditionerErrorCode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF78F6F3283BB0CE00725897 /* AirConditionerErrorCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirConditionerErrorCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF78F6F6283BB0CF00725897 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF78F6F8283BB0CF00725897 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3390BD32732ED6F2663AF890 /* Pods_AirConditionerErrorCode.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0447D49145AD9CE56342F138 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F186DD7C8B4B7DA982DD99E /* Pods-AirConditionerErrorCode.debug.xcconfig */,
+				9B0BAEB9C2EA1872399F7036 /* Pods-AirConditionerErrorCode.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		706673EBBCD82D0216FD3F99 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E967F4E4946B5FC653380987 /* Pods_AirConditionerErrorCode.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FF78F6EA283BB0CE00725897 = {
 			isa = PBXGroup;
 			children = (
 				FF78F6F5283BB0CE00725897 /* AirConditionerErrorCode */,
 				FF78F6F4283BB0CE00725897 /* Products */,
+				0447D49145AD9CE56342F138 /* Pods */,
+				706673EBBCD82D0216FD3F99 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF78F707283BB0D000725897 /* Build configuration list for PBXNativeTarget "AirConditionerErrorCode" */;
 			buildPhases = (
+				7C5F4A48D6F6E27D7D1D9565 /* [CP] Check Pods Manifest.lock */,
 				FF78F6EF283BB0CE00725897 /* Sources */,
 				FF78F6F0283BB0CE00725897 /* Frameworks */,
 				FF78F6F1283BB0CE00725897 /* Resources */,
+				517A3406A4316C976335F0B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		517A3406A4316C976335F0B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirConditionerErrorCode/Pods-AirConditionerErrorCode-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AirConditionerErrorCode/Pods-AirConditionerErrorCode-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AirConditionerErrorCode/Pods-AirConditionerErrorCode-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C5F4A48D6F6E27D7D1D9565 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AirConditionerErrorCode-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FF78F6EF283BB0CE00725897 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		FF78F708283BB0D000725897 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F186DD7C8B4B7DA982DD99E /* Pods-AirConditionerErrorCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -293,8 +363,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,12 +375,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		FF78F709283BB0D000725897 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B0BAEB9C2EA1872399F7036 /* Pods-AirConditionerErrorCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,8 +393,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +405,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
