@@ -14,7 +14,7 @@
 		FF78F6FE283BB0CF00725897 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF78F6FC283BB0CF00725897 /* Main.storyboard */; };
 		FF78F700283BB0D000725897 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF78F6FF283BB0D000725897 /* Assets.xcassets */; };
 		FF78F703283BB0D000725897 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF78F701283BB0D000725897 /* LaunchScreen.storyboard */; };
-		FFBC10CE283FE6F900D08518 /* PacErrorCode.csv in Resources */ = {isa = PBXBuildFile; fileRef = FFBC10CD283FE6F900D08518 /* PacErrorCode.csv */; };
+		FFBC10D2283FF3D900D08518 /* PacErrorCode.csv in Resources */ = {isa = PBXBuildFile; fileRef = FFBC10D1283FF3D900D08518 /* PacErrorCode.csv */; };
 		FFFD4B8D283BB6B300D75B9C /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD4B8C283BB6B300D75B9C /* ErrorCode.swift */; };
 		FFFD4B8F283BBF6400D75B9C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFD4B8E283BBF6400D75B9C /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +31,7 @@
 		FF78F6FF283BB0D000725897 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF78F702283BB0D000725897 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF78F704283BB0D000725897 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FFBC10CD283FE6F900D08518 /* PacErrorCode.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacErrorCode.csv; sourceTree = "<group>"; };
+		FFBC10D1283FF3D900D08518 /* PacErrorCode.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PacErrorCode.csv; sourceTree = "<group>"; };
 		FFFD4B8C283BB6B300D75B9C /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 		FFFD4B8E283BBF6400D75B9C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,9 +93,9 @@
 				FF78F6FA283BB0CF00725897 /* ViewController.swift */,
 				FF78F6FC283BB0CF00725897 /* Main.storyboard */,
 				FF78F6FF283BB0D000725897 /* Assets.xcassets */,
-				FFBC10CD283FE6F900D08518 /* PacErrorCode.csv */,
 				FF78F701283BB0D000725897 /* LaunchScreen.storyboard */,
 				FF78F704283BB0D000725897 /* Info.plist */,
+				FFBC10D1283FF3D900D08518 /* PacErrorCode.csv */,
 			);
 			path = AirConditionerErrorCode;
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 				FF78F703283BB0D000725897 /* LaunchScreen.storyboard in Resources */,
 				FF78F700283BB0D000725897 /* Assets.xcassets in Resources */,
 				FF78F6FE283BB0CF00725897 /* Main.storyboard in Resources */,
-				FFBC10CE283FE6F900D08518 /* PacErrorCode.csv in Resources */,
+				FFBC10D2283FF3D900D08518 /* PacErrorCode.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

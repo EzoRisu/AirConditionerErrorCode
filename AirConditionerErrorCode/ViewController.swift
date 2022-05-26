@@ -13,16 +13,21 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UISearchBar!
     
+    var errorCode: ErrorCode!
     let realm = try! Realm()
     var errorCodeArray = try! Realm().objects(ErrorCode.self)
+    var csvArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         // tableView.fillerRowHeight = UITableView.automaticDimension
         // tableView.delegate = self
         // tableView.dataSource = self
+        
         searchField.delegate = self
+        csvArray = loadCSV(filename: "PacErrorCode")
+        self.saveCsvValue(csvArray)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,15 +49,14 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("DEBUG_PRINT: numberOfRow = \(errorCodeArray.count)")
         return errorCodeArray.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,9 +91,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
         if searchText.isEmpty {
             errorCodeArray = realm.objects(ErrorCode.self).filter("errorCode == %@", searchText)
+            // errorCodeArray = realm.objects(ErrorCode.self)
         } else {
             tableView.fillerRowHeight = 0.0
             tableView.delegate = self
@@ -101,6 +105,37 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func loadCSV(filename: String) -> [String] {
+        print("DEBUG_PRINT: LoadCSV")
+        let csvBundle = Bundle.main.path(forResource: filename, ofType: "csv")!
+        do {
+            let csvData = try String(contentsOfFile: csvBundle, encoding: String.Encoding.utf8 )
+            let lineChange = csvData.replacingOccurrences(of: "\r", with: "\r")
+            csvArray = lineChange.components(separatedBy: "\n")
+            csvArray.removeLast()
+        } catch {
+            print("ERROR")
+        }
+        return csvArray
+    }
+    
+    func saveCsvValue(csvArray: String) {
+        let splitStr = csvArray.components(separatedBy: ",")
+        errorCode.id = Int(splitStr[0])!
+        errorCode.errorCode = splitStr[1]
+        errorCode.manifacturer = splitStr[2]
+        errorCode.unit = splitStr[3]
+        errorCode.discription = splitStr[4]
+        errorCode.cause = splitStr[5]
+        
+        do {
+            try realm.write {
+                realm.add(errorCode ,update: .modified)
+            }
+        } catch {
+        }
     }
 }
 
