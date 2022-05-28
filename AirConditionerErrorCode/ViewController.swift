@@ -13,8 +13,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UISearchBar!
     
-    var errorCode: ErrorCode!
+   
     let realm = try! Realm()
+    var errorCode: ErrorCode!
     var errorCodeArray = try! Realm().objects(ErrorCode.self)
     var csvArray: [String] = []
     
@@ -26,8 +27,41 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         // tableView.dataSource = self
         
         searchField.delegate = self
-        csvArray = loadCSV(filename: "PacErrorCode")
-        self.saveCsvValue(csvArray)
+        
+        var csvLines = [String]()
+        
+        guard let path = Bundle.main.path(forResource: "PacErrorCode", ofType: "csv") else {
+            print("ERROR: No file")
+            return
+        }
+        
+        do {
+            let csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8 )
+            csvLines = csvString.components(separatedBy: .newlines)
+            csvLines.removeLast()
+        } catch let error as NSError {
+            print("ERROR")
+            return
+        }
+        
+        for csvData in csvLines {
+            let csvDetail = csvData.components(separatedBy: ",")
+            print("DEBUG_PRINT: csvDetail ID = \(csvDetail[0])")
+            print("DEBUG_PRINT: csvDetail CODE = \(csvDetail[1])")
+            print("DEBUG_PRINT: csvDetail MANI = \(csvDetail[2])")
+            print("DEBUG_PRINT: csvDetail UNIT = \(csvDetail[3])")
+            print("DEBUG_PRINT: csvDetail DISCRIPTION = \(csvDetail[4])")
+            
+            //self.errorCode.id = Int(csvDetail[0])!
+            self.errorCode.errorCode = csvDetail[1]
+            self.errorCode.manifacturer = csvDetail[2]
+            self.errorCode.unit = csvDetail[3]
+            self.errorCode.discription = csvDetail[4]
+            
+            try! realm.write {
+                self.realm.add(self.errorCode, update: .modified)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -105,37 +139,6 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    func loadCSV(filename: String) -> [String] {
-        print("DEBUG_PRINT: LoadCSV")
-        let csvBundle = Bundle.main.path(forResource: filename, ofType: "csv")!
-        do {
-            let csvData = try String(contentsOfFile: csvBundle, encoding: String.Encoding.utf8 )
-            let lineChange = csvData.replacingOccurrences(of: "\r", with: "\r")
-            csvArray = lineChange.components(separatedBy: "\n")
-            csvArray.removeLast()
-        } catch {
-            print("ERROR")
-        }
-        return csvArray
-    }
-    
-    func saveCsvValue(csvArray: String) {
-        let splitStr = csvArray.components(separatedBy: ",")
-        errorCode.id = Int(splitStr[0])!
-        errorCode.errorCode = splitStr[1]
-        errorCode.manifacturer = splitStr[2]
-        errorCode.unit = splitStr[3]
-        errorCode.discription = splitStr[4]
-        errorCode.cause = splitStr[5]
-        
-        do {
-            try realm.write {
-                realm.add(errorCode ,update: .modified)
-            }
-        } catch {
-        }
     }
 }
 
