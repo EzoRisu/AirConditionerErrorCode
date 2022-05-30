@@ -13,9 +13,8 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UISearchBar!
     
-   
+    let errorCode = ErrorCode()
     let realm = try! Realm()
-    var errorCode: ErrorCode!
     var errorCodeArray = try! Realm().objects(ErrorCode.self)
     var csvArray: [String] = []
     
@@ -27,6 +26,9 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         // tableView.dataSource = self
         
         searchField.delegate = self
+        try! realm.write {
+            realm.deleteAll()
+        }
         
         var csvLines = [String]()
         
@@ -37,7 +39,7 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
         
         do {
             let csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8 )
-            csvLines = csvString.components(separatedBy: .newlines)
+            csvLines = csvString.components(separatedBy: "\n")
             csvLines.removeLast()
         } catch let error as NSError {
             print("ERROR")
@@ -53,13 +55,22 @@ class ViewController: UIViewController,UITableViewDelegate, UITableViewDataSourc
             print("DEBUG_PRINT: csvDetail DISCRIPTION = \(csvDetail[4])")
             
             //self.errorCode.id = Int(csvDetail[0])!
+            let errorCode = ErrorCode()
+            
+            let items = realm.objects(ErrorCode.self)
+            if items.count != 0 {
+                print("DEBUG_PRINT: items.count = \(items.count)")
+                self.errorCode.id = items.max(ofProperty: "id")! + 1
+                print("DEBUG_PRINT: errorCode.id = \(errorCode.id)")
+            }
+            
             self.errorCode.errorCode = csvDetail[1]
             self.errorCode.manifacturer = csvDetail[2]
             self.errorCode.unit = csvDetail[3]
             self.errorCode.discription = csvDetail[4]
             
             try! realm.write {
-                self.realm.add(self.errorCode, update: .modified)
+                self.realm.add(self.errorCode) //, update: .modified)
             }
         }
     }
